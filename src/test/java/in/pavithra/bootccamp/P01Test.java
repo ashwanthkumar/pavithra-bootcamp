@@ -25,4 +25,30 @@ public class P01Test {
         P01.last(new ArrayList<>());
     }
 
+    @Test
+    public void shouldFindFirstElementFromList() {
+        assertThat(P01.first(asList("a", "b", "c", "d")), is(equalTo("a")));
+    }
+
+    @Test
+    public void shouldGetNthElementFromList() {
+        assertThat(P01.index(2, asList("a", "b", "c", "d")), is(equalTo("c")));
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void shouldreturnExceptionOnEmptyList() {
+        P01.first(new ArrayList<>());
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void shouldreturnExceptionIndexexceedsListSize() {
+        P01.index(2,asList("a"));
+    }
+
+
+    @Test(expected=IllegalArgumentException.class)
+    public void shouldreturnExceptionIndexequaltoListsizeOne() {
+        P01.index(0,new ArrayList<>());
+    }
+
 }
